@@ -5,7 +5,7 @@ defmodule Wabanex.Users.Get do
   def call(id) do
     id
     |> UUID.cast()
-    |> handle_respoonse()
+    |> handle_response()
   end
 
   defp handle_response(:error) do
