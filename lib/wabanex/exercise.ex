@@ -7,7 +7,7 @@ defmodule Wabanex.Exercise do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
-  @fields [:end_date, :start_date, :user_id]
+  @fields [:name, :youtube_video_url, :protocol_description, :repetitions]
 
   schema "exercises" do
     field :name, :string
@@ -20,11 +20,9 @@ defmodule Wabanex.Exercise do
     timestamps()
   end
 
-  def changeset (params) do
-    %__MODULE__{}
+  def changeset(exercise, params) do
+    exercise
     |> cast(params, @fields)
     |> validate_required(@fields)
-    |> unique_constraint([:email])
-    |> cast_assoc(:exercises)
   end
 end
